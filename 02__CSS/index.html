@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>VueJS</title>
+  <link rel="stylesheet" href="index.css">
+  <script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>{{ title }}</h1>
+
+    <!-- Setting class with an array -->
+    <h2>Setting class with array</h2>
+    <div class="demo" @click="attachRed = !attachRed" :class="divClasses"></div>
+    <div class="demo" @click="attachRed = !attachRed" :class="divClasses"></div>
+    <p>{{ divClasses }}</p>
+    <hr>
+
+    <!-- Setting class with an input field -->
+    <h2>Setting class with <input></h2>
+    <div class="demo" :class="colorAttr"></div>
+    <input type="text" v-model="colorAttr">
+    <p>{{ colorAttr }}</p>
+    <hr>
+
+    <!-- Setting CSS without using classes -->
+    <h2>CSS Styling w/o Class</h2>
+    <div class="demo" :style="[myStyle, {'height': width+'px'}]"></div>
+    <input type="text" v-model="colorClass">
+    <input type="text" v-model="width">
+    <p>{{ colorClass }}</p>
+    <hr>
+  </div>
+  <script type="text/javascript" src="vue-script.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>VueJS</title>
+  <link rel="stylesheet" href="">
+  <script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+  <div id="app" v-on:mousemove="updateCoordinates">
+    <input type="text" v-on:input="changeTitle">
+    <h1>{{ title }}</h1>
+    <button type="button" name="button" v-on:click="addCount(2, $event)">Click Me!</button>
+    <button tyData-Bind-Event-Computed-Watchpe="button" name="button" v-on:click="clickCount++">Click Me!</button>
+    <button type="button" name="button" v-on:click="clickCount=0">Reset Count</button>
+    <h3>{{ clickCount > 10 ?  'Greater than 10' : 'Smaller than 10' }}</h3>
+    <h3>{{ clickCount }}</h3>
+    <hr>
+    <h1>Using Key Events</h1>
+    <p v-on:mousemove.stop="">
+      Coordinates: {{ x }} / {{ y }}
+      - <span v-on:mousemove.stop="">DEAD SPOT</span>
+    </p>
+    <input type="text" v-on:keyup.enter="alertMe">
+    <hr>
+    <h1>Using v-models</h1>
+    <input type="text" v-model="name">
+    <h3>{{ name }}</h3>
+    <hr>
+    <h1>Using computed and watch properties</h1>
+    <button type="button" name="button" v-on:click="clickCount++">Increase</button>
+    <button type="button" name="button" v-on:click="clickCount--">Increase</button>
+    <button type="button" name="button" v-on:click="clickCountSecond++">Increase Second</button>
+    <button type="button" name="button" v-on:click="clickCountSecond--">Decrease Second</button>
+    <p>Count: {{ clickCount }} | {{ clickCountSecond }}</p>
+    <p>Result: {{ output }} | {{ result() }}</p>
+    <hr>
+  </div>
+  <script type="text/javascript" src="vue-script.js"></script>
+</body>
+</html>
