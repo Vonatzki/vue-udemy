@@ -11,6 +11,12 @@
       <router-link exact :to="{name: 'portfolio'}" tag="li" class="nav-item" active-class="active"><a class="nav-link" href="#">My Portfolio</a></router-link>
       <router-link exact :to="{name: 'stocks'}" tag="li" class="nav-item" active-class="active"><a class="nav-link" href="#">Stocks</a></router-link>
 
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <router-link exact :to="{name: 'end_day'}" tag="li" class="nav-item" active-class="active"><a class="nav-link" href="#">End Day</a></router-link>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown
@@ -22,15 +28,7 @@
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
     </ul>
-    <ul class="navbar-nav ml-auto">
-      <router-link exact :to="{name: 'home'}" tag="li" class="nav-item" active-class="active"><a class="nav-link" href="#">End Day</a></router-link>
-    </ul>
-
-    </form>
   </div>
 </nav>
 </template>
