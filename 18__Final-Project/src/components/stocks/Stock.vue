@@ -9,7 +9,7 @@
             </p>
             <form @submit.prevent class="form-inline">
                 <div class="input-group mb-2 mr-sm-2">
-                    <input type="number" class="form-control" placeholder="Quantity">
+                    <input type="number" class="form-control" placeholder="Quantity" v-model="quantity">
                 </div>
                 <button type="submit" class="btn btn-primary mb-2">Buy</button>
             </form>
@@ -20,6 +20,11 @@
 
 <script>
 export default {
+    data(){
+        return {
+            quantity:0
+        }
+    },
     props:['stock']
 }
 </script>
