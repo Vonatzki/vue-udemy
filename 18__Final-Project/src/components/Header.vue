@@ -12,7 +12,7 @@
       <router-link exact :to="{name: 'stocks'}" tag="li" class="nav-item" active-class="active"><a class="nav-link" href="#">Stocks</a></router-link>
     </ul>
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown">        
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Save & Load
         </a>
@@ -23,11 +23,25 @@
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </li>
+      <router-link exact :to="{name: 'portfolio'}" tag="li" class="nav-item" active-class="active"><a class="nav-link" href="#">Remaining Funds: {{ fund }}</a></router-link>
       <router-link exact :to="{name: 'end_day'}" tag="li" class="nav-item" active-class="active"><a class="nav-link" href="#">End Day</a></router-link>
     </ul>
   </div>
 </nav>
 </template>
+<script>
+import HRNumbers from 'human-readable-numbers';
+
+export default {
+  computed: {
+    fund () {
+      const myFunds = this.$store.getters.funds;
+
+      return HRNumbers.toHumanString(myFunds);
+    }
+  }
+}
+</script>
 <style scoped>
 .navbar {
   margin-bottom: 20px;

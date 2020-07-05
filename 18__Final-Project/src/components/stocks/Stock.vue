@@ -7,16 +7,32 @@
             <p class="card-text">
                 Stock Price: {{ stock.price }}
             </p>
-            <form @submit.prevent class="form-inline">
-                <div class="input-group mb-2 mr-sm-2">
+            <transition
+                name="slide"
+                mode="out-in"
+                appear
+                enter-active-class="animate__animated animate__faster animate__flipInX"
+                leave-active-class="animate__animated animate__faster animate__flipOutX">
+            <button
+                v-if="!buyMode"
+                @click="buyMode=!buyMode"
+                type="submit"
+                class="btn btn-primary mb-2">Buy</button>                
+            <form @submit.prevent class="form-inline" v-if="buyMode">
+                <div class="input-group mb-1 mr-sm-1">
                     <input type="number" class="form-control" placeholder="Quantity" v-model="quantity">
                 </div>
                 <button
-                    :disabled="quantity <= 0 || !Number.isInteger(quantity)"
+                    :disabled="isValidQuantity"
                     @click="buyStock"
                     type="submit"
-                    class="btn btn-primary mb-2">Buy</button>
+                    class="btn btn-success mb-2">OK</button>
+                <button
+                    @click="buyMode=!buyMode; quantity=0"
+                    type="submit"
+                    class="btn btn-danger mb-2">X</button>                    
             </form>
+            </transition>
         </div>
     </div>
 </div>
@@ -26,10 +42,16 @@
 export default {
     data(){
         return {
+            buyMode:false,
             quantity:0
         }
     },
     props:['stock'],
+    computed:{
+        isValidQuantity () {
+            return this.quantity <= 0 || Number.isInteger(this.quantity);
+        }
+    },
     methods:{
         buyStock(){
 
@@ -39,8 +61,9 @@ export default {
                 quantity: this.quantity
             };
 
-            console.log(order);
+            this.$store.dispatch('buyStock', order);
             this.quantity = 0;
+            console.log(order);
         }
     }
 }
